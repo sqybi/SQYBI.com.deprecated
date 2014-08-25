@@ -1,0 +1,15 @@
+{% load blog_helper %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>{{ article.title }}</title>
+</head>
+<body>
+	<h1>{{ article.title }}</h1>
+	<hr />
+	<div>
+		{{ article.html_content | striptags | abstract }}
+	</div>
+</body>
+</html>

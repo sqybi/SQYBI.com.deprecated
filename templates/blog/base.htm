@@ -1,0 +1,42 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	
+	<title>
+		{% block title %}SQYBI.com{% endblock %}
+	</title>
+	
+	<link rel="stylesheet" href="{% static "blog/general.css" %}">
+	
+	<script src="{% static "general/jquery-1.11.1.min.js" %}"></script>
+</head>
+
+<body>
+	<div id="navi">
+		{% block navi %}
+		<div id="navi-center">
+		
+		</div>
+		{% endblock %}
+	</div>
+	<div id="header">
+		{% block header %}
+		{% endblock %}
+	</div>
+	<div id="content">
+		{% block content %}
+		{% endblock %}
+	</div>
+	<div id="sidebar">
+		{% block sidebar %}
+		{% endblock %}
+	</div>
+	<div id="footer">
+		{% block footer %}
+		{% endblock %}
+	</div>
+</body>
+</html>
