@@ -4,7 +4,7 @@ from django.db import models
 
 # User information
 class User(models.Model):
-    user_name = models.CharField(max_length = 50, help_text = "Max length: 50", unique = True, db_index = True)
+    user_name = models.CharField(max_length = 50, unique = True, db_index = True)
     is_admin = models.BooleanField()
     email = models.EmailField(max_length = 100)
     website = models.URLField(blank = True)
@@ -30,6 +30,7 @@ class Article(models.Model):
     html_content = models.TextField(blank = True)
     published_time = models.DateTimeField()
     last_modified_time = models.DateTimeField()
+    is_shown = models.BooleanField()
 
     def __unicode__(self):
         return "%s:%s" % (self.id, self.title)
@@ -38,7 +39,7 @@ class Article(models.Model):
 class Comment(models.Model):
     related_article = models.ForeignKey('Article')
     is_registered_user = models.BooleanField()
-    user_id = models.ForeignKey('User')
+    user_id = models.ForeignKey('User', null = True)
     name = models.CharField(max_length = 50, null = True)
     email = models.EmailField(max_length = 100, null = True, blank = True)
     website = models.URLField(null = True, blank = True)
