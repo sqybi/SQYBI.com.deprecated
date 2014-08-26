@@ -6,33 +6,46 @@
 	<meta charset="utf-8" />
 	
 	<title>
-		{% block title %}SQYBI.com{% endblock %}
+		{% block title %}模板页{% endblock %} | 三千院大小姐的紫公馆 @ SQYBI.com
 	</title>
 	
-	<link rel="stylesheet" href="{% static "blog/general.css" %}">
+	<link rel="stylesheet" href="{% static "blog/css/general.css" %}">
 	
-	<script src="{% static "general/jquery-1.11.1.min.js" %}"></script>
+	<script src="{% static "general/js/jquery-1.11.1.min.js" %}"></script>
 </head>
 
 <body>
-	<div id="navi">
-		{% block navi %}
-		<div id="navi-center">
-		
-		</div>
-		{% endblock %}
-	</div>
 	<div id="header">
 		{% block header %}
 		{% endblock %}
 	</div>
-	<div id="content">
-		{% block content %}
-		{% endblock %}
-	</div>
-	<div id="sidebar">
-		{% block sidebar %}
-		{% endblock %}
+	<div id="main">
+		<div id="content">
+			{% block content %}
+			{% endblock %}
+		</div>
+		<div id="sidebar">
+			{% block sidebar %}
+				{% if articles != None and len(articles) > 0 %}
+					<div id="sidebar-article" class="sidebar-item">
+						{% block sidebar_article %}
+							<span class="small-text title-text">最新文章</span>
+							<ul class="small-text">
+								{% for article in articles[:5] %}
+									<li>{{ article.title[:20] }}</li>
+								{% endfor %}
+							</ul>
+						{% endblock %}
+					</div>
+				{% endif %}
+				{% if False %}
+					{% block sidebar_comment %}
+						<div id="sidebar-comment" class="sidebar-item">
+						</div>
+					{% endblock %}
+				{% endif %}
+			{% endblock %}
+		</div>
 	</div>
 	<div id="footer">
 		{% block footer %}
