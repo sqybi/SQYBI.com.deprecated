@@ -1,10 +1,10 @@
-{% if articles != None and len(articles) > 0 %}
+{% if articles != None and articles|length > 0 %}
 	<div id="sidebar-article" class="sidebar-item">
 		{% block sidebar_article %}
 			<span class="small-text title-text">最新文章</span>
 			<ul class="small-text">
-				{% for article in articles[:5] %}
-					<li>{{ article.title[:20] }}</li>
+				{% for article in articles|slice:":5" %}
+					<li><a href="/blog/article/{{ article.slug }}/">{{ article.title|slice:":20" }}</a></li>
 				{% endfor %}
 			</ul>
 		{% endblock %}

@@ -9,9 +9,8 @@ def index(request):
     context = {
         "articles": list(articles),
     }
-    print articles
 
-    return render(request, "blog/index.htm")
+    return render(request, "blog/index.htm", context)
 
 def article(request, article_id = None, article_slug = None):
     articles = Article.objects.filter(is_shown = True).order_by("id")[::-1]
@@ -28,5 +27,5 @@ def article(request, article_id = None, article_slug = None):
         "article": article,
     }
 
-    return render(request, "blog/article/show.htm", context)
+    return render(request, "blog/article.htm", context)
 
