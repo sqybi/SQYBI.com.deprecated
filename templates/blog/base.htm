@@ -26,24 +26,7 @@
 		</div>
 		<div id="sidebar">
 			{% block sidebar %}
-				{% if articles != None and len(articles) > 0 %}
-					<div id="sidebar-article" class="sidebar-item">
-						{% block sidebar_article %}
-							<span class="small-text title-text">最新文章</span>
-							<ul class="small-text">
-								{% for article in articles[:5] %}
-									<li>{{ article.title[:20] }}</li>
-								{% endfor %}
-							</ul>
-						{% endblock %}
-					</div>
-				{% endif %}
-				{% if False %}
-					{% block sidebar_comment %}
-						<div id="sidebar-comment" class="sidebar-item">
-						</div>
-					{% endblock %}
-				{% endif %}
+				{% include "blog/partial/sidebar.htm" %}
 			{% endblock %}
 		</div>
 	</div>
