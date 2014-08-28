@@ -1,3 +1,26 @@
 {% extends "blog/base.htm" %}
 
+{% load blog_helper %}
+
 {% block title %}首页{% endblock %}
+
+{% block content %}
+	{% for article in selected_articles %}
+		<div class="article-abstract">
+			<div class="article-abstract-title">
+				{{ article.title }}
+			</div>
+			<div class="article-abstract-post-time">
+				Post time: {{ article.published_time }}
+			</div>
+			<div class="article-abstract-content">
+				<p>
+				{{ article.html_content | striptags | abstract }}
+				</p>
+				<p>
+					<a href="/blog/article/{{ article.slug }}/">More...</a>
+				</p>
+			</div>
+		</div>
+	{% endfor %}
+{% endblock %}

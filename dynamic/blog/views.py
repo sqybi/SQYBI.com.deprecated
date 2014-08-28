@@ -3,11 +3,15 @@ from django.http import Http404
 
 from blog.models import Article
 
-def index(request):
+def index(request, page = 1):
     articles = Article.objects.filter(is_shown = True).order_by("id")[::-1]
+
+    start_article = (page - 1) * 5;
+    end_article = page * 5;
 
     context = {
         "articles": list(articles),
+        "selected_articles": list(articles)[start_article:end_article],
     }
 
     return render(request, "blog/index.htm", context)
