@@ -1,14 +1,15 @@
-# Methods related to Gravatar
+"""
+Helper methods related to Gravatar
+"""
 
 import hashlib
 
 
-def get_email_hash(email_address):
-    return hashlib.md5(email_address.strip().lower()).hexdigest()
+# public methods
 
 
 def get_image_url(email_address, size=None):
-    email_hash = get_email_hash(email_address)
+    email_hash = __get_email_hash(email_address)
     url = "http://www.gravatar.com/avatar/" + email_hash
     if size is not None:
         url += "?s=" + size
@@ -19,3 +20,10 @@ def get_profile_url(email_address):
     email_hash = email_address
     url = "http://www.gravatar.com/" + email_hash
     return url
+
+
+# private methods
+
+
+def __get_email_hash(email_address):
+    return hashlib.md5(email_address.strip().lower()).hexdigest()
