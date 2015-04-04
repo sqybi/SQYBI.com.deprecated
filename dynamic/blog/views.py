@@ -8,8 +8,10 @@ import helper.constants
 def index(request, page=1):
     articles = BlogArticleItem.objects.filter(is_shown=True).order_by("create_time")[::-1]
 
-    start_article = (page - 1) * 5;
-    end_article = page * 5;
+    start_article = (page - 1) * helper.constants.blog_article_per_page;
+    end_article = page * helper.constants.blog_article_per_page;
+
+    total_page = (len(articles) - 1 + helper.constants.blog_article_per_page) / helper.constants.blog_article_per_page
 
     context = {
         "title": "三千院大小姐的紫公馆 | SQYBI.com",
@@ -18,6 +20,8 @@ def index(request, page=1):
         "alert_message": helper.constants.alert_message,
         "all_articles": list(articles),
         "selected_articles": list(articles)[start_article:end_article],
+        "prev_page": None if page == 1 else str(page - 1),
+        "next_page": None if page == total_page else str(page + 1),
     }
 
     return render(request, "blog/index.htm", context)

@@ -8,10 +8,45 @@
 
 {% block main %}
     <div class="container main-container">
+
         {% if warning_message != None %}
             <div class="alert alert-warning" role="alert">
                 {{ warning_message }}
             </div>
         {% endif %}
+
+        <div class="row">
+            <div class="col-sm-8 blog-main">
+                <div class="blog-posts">
+                    {% for article in selected_articles %}
+                        <div class="blog-post">
+                            <h2 class="blog-post-title"><a href="/blog/article/{{ article.slug }}">{{ article.title }}</a></h2>
+
+                            <p class="blog-post-meta">
+                                <a href="/user/{{ article.author.id }}">{{ article.author.user_name }}</a> · {{ article.create_time }}
+                            </p>
+
+                            <p class="blog-post-body">
+                                {{ article.html_content|safe }}
+                            </p>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <nav>
+                    <ul class="pager">
+                        {% if prev_page != None %}
+                            <li><a href="/blog/{{ prev_page }}">Previous</a></li>
+                        {% endif %}
+                        {% if next_page != None %}
+                            <li><a href="/blog/{{ next_page }}">Next</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        {% include "blog/partial/sidebar.html" %}
+
     </div>
 {% endblock %}
