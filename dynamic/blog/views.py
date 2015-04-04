@@ -20,8 +20,8 @@ def index(request, page=1):
         "alert_message": helper.constants.alert_message,
         "all_articles": list(articles),
         "selected_articles": list(articles)[start_article:end_article],
-        "prev_page": None if page == 1 else str(page - 1),
-        "next_page": None if page == total_page else str(page + 1),
+        "prev_page": None if page <= 1 else str(page - 1),
+        "next_page": None if page >= total_page else str(page + 1),
     }
 
     return render(request, "blog/index.html", context)
