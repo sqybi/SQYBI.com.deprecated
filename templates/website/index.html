@@ -1,5 +1,7 @@
 {% extends "website/base.html" %}
 
+{% load staticfiles %}
+
 {% block stylesheets %}
     <link href="{% static "css/home.css" %}" rel="stylesheet">
 {% endblock %}
@@ -12,7 +14,7 @@
                     <h1 class="cover-heading">SQYBI.com</h1>
 
                     <p class="lead">
-                        {{ daily_quote }}
+                        {{ daily_quote|safe }}
                     </p>
 
                     <p class="lead">

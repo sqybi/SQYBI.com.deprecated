@@ -11,7 +11,7 @@ salt_base = "salt_base_string"
 # Database settings
 db_host = ""
 db_name = "website_test"
-db_user = "sqybi"
+db_user = "sqybi_test"
 db_password = "000000"
 
 # Django secret key
