@@ -76,7 +76,6 @@ h1.cover-heading {
  * Affix and center
  */
 
-/* Start the vertical centering */
 .site-wrapper-inner {
     vertical-align: middle;
 }
@@ -84,4 +83,10 @@ h1.cover-heading {
 /* Handle the widths */
 .cover-container {
     width: 100%; /* Must be percentage or pixels for horizontal alignment */
+}
+
+@media (min-width: 768px) {
+    .cover-container {
+        width: 768px;
+    }
 }

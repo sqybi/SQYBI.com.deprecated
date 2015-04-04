@@ -47,6 +47,13 @@ h1.cover-heading {
     margin-bottom: 30px;
 }
 
+@media (max-width: 768px) {
+    h1.cover-heading {
+        font-size: 60px;
+        margin-bottom: 20px;
+    }
+}
+
 /* Padding for spacing */
 .inner {
     padding: 30px;
@@ -69,35 +76,17 @@ h1.cover-heading {
  * Affix and center
  */
 
-@media (min-width: 768px) {
-    /* Pull out the header and footer */
-    .masthead {
-        position: fixed;
-        top: 0;
-    }
-
-    .mastfoot {
-        position: fixed;
-        bottom: 0;
-    }
-
-    /* Start the vertical centering */
-    .site-wrapper-inner {
-        vertical-align: middle;
-    }
-
-    /* Handle the widths */
-    .masthead,
-    .mastfoot,
-    .cover-container {
-        width: 100%; /* Must be percentage or pixels for horizontal alignment */
-    }
+.site-wrapper-inner {
+    vertical-align: middle;
 }
 
-@media (min-width: 992px) {
-    .masthead,
-    .mastfoot,
+/* Handle the widths */
+.cover-container {
+    width: 100%; /* Must be percentage or pixels for horizontal alignment */
+}
+
+@media (min-width: 768px) {
     .cover-container {
-        width: 700px;
+        width: 768px;
     }
 }
