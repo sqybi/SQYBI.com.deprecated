@@ -8,6 +8,5 @@ import user.models
 # Register your models here.
 admin.site.register(user.models.User)
 admin.site.register(user.models.UserRecord)
-admin.site.register(website.models.BaseItem)
 admin.site.register(blog.models.BlogArticleItem)
 admin.site.register(blog.models.BlogCommentItem)

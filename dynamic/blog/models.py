@@ -8,7 +8,7 @@ class BlogArticleItem(website.models.BaseItem):
     title = models.CharField(max_length=100)
     markdown_content = models.TextField(blank=True)
     html_content = models.TextField(blank=True)
-    is_shown = models.BooleanField()
+    is_shown = models.BooleanField(default=True)
 
     def __unicode__(self):
         return "%s:%s" % (self.id, self.title)
