@@ -14,7 +14,7 @@ def index(request, page=1):
     total_page = (len(articles) - 1 + helper.constants.blog_article_per_page) / helper.constants.blog_article_per_page
 
     context = {
-        "title": "三千院大小姐的紫公馆 | SQYBI.com",
+        "title": helper.constants.blog_title + " | SQYBI.com",
         "app": "blog",
         "alert_level": helper.constants.alert_level,
         "alert_message": helper.constants.alert_message,
@@ -38,7 +38,7 @@ def article(request, article_id=None, article_slug=None):
         raise Http404
 
     context = {
-        "title": selected_article.title + " | 三千院大小姐的紫公馆 | SQYBI.com",
+        "title": selected_article.title + " | " + helper.constants.blog_title + " | SQYBI.com",
         "app": "blog",
         "alert_level": helper.constants.alert_level,
         "alert_message": helper.constants.alert_message,
