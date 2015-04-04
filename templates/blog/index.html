@@ -1,0 +1,17 @@
+{% extends "website/base.html" %}
+
+{% load staticfiles %}
+
+{% block stylesheets %}
+    <link href="{% static "css/blog.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+    <div class="container main-container">
+        {% if warning_message != None %}
+            <div class="alert alert-warning" role="alert">
+                {{ warning_message }}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

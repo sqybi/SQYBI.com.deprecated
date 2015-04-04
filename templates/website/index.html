@@ -7,6 +7,14 @@
 {% endblock %}
 
 {% block main %}
+    {% if alert_level != None %}
+        <div class="alert alert-{{ alert_level }}" role="alert">
+            {% if alert_message != None %}
+                {{ alert_message }}
+            {% endif %}
+        </div>
+    {% endif %}
+
     <div class="site-wrapper">
         <div class="site-wrapper-inner">
             <div class="cover-container">
