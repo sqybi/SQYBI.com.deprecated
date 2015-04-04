@@ -24,7 +24,7 @@ def index(request, page=1):
         "next_page": None if page == total_page else str(page + 1),
     }
 
-    return render(request, "blog/index.htm", context)
+    return render(request, "blog/index.html", context)
 
 
 def article(request, article_id=None, article_slug=None):
@@ -46,4 +46,4 @@ def article(request, article_id=None, article_slug=None):
         "selected_article": selected_article,
     }
 
-    return render(request, "blog/article.htm", context)
+    return render(request, "blog/article.html", context)
