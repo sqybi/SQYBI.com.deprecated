@@ -25,6 +25,12 @@
                         {{ daily_quote|safe }}
                     </p>
 
+                    {% if daily_quote_author != None %}
+                        <p style="float:right">——来自<em>{{ daily_quote_author }}</em></p>
+                    {% endif %}
+
+                    <div style="clear:both"></div>
+
                     <p class="lead">
                         <a href="/about" class="btn btn-lg btn-default">About</a>
                     </p>

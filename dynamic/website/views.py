@@ -5,12 +5,15 @@ import helper.constants
 
 
 def home(request):
+    random_quote = random.choice(helper.constants.daily_quotes)
+
     context = {
         "title": "Home | SQYBI.com",
         "app": "Home",
         "alert_level": helper.constants.alert_level,
         "alert_message": helper.constants.alert_message,
-        "daily_quote": random.choice(helper.constants.daily_quotes)
+        "daily_quote": random_quote[0],
+        "daily_quote_author": random_quote[1],
     }
 
     return render(request, "website/index.html", context)
