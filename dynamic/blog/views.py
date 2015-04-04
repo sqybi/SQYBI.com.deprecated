@@ -13,6 +13,7 @@ def index(request, page=1):
     context = {
         "articles": list(articles),
         "selected_articles": list(articles)[start_article:end_article],
+        "app": "blog",
     }
 
     return render(request, "blog/index.htm", context)
@@ -31,6 +32,7 @@ def article(request, article_id=None, article_slug=None):
     context = {
         "articles": list(articles),
         "article": article_object,
+        "app": "blog",
     }
 
     return render(request, "blog/article.htm", context)

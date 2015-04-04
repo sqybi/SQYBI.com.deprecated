@@ -16,8 +16,8 @@ class BlogArticleItem(website.models.BaseItem):
 
 # Comments
 class BlogCommentItem(website.models.BaseItem):
-    article = models.ForeignKey(BlogArticleItem, null=False)
-    content = models.TextField()
+    article = models.ForeignKey(BlogArticleItem, null=False, related_name="comments")
+    content = models.TextField(blank=True)
 
     def __unicode__(self):
         return "%s:%s" % (self.id, self.related_article_id)

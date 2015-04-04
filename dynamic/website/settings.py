@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
+import helper.constants
+
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -18,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '=erw^b=h7gqntcy%x%fqg*f%mj3hl8odxg7kp@h6hwu647blh$'
+SECRET_KEY = helper.constants.django_secret_key
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,7 +40,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'website',
     'blog',
+    'user',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -60,10 +65,10 @@ WSGI_APPLICATION = 'website.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'website_test',
-        'USER': 'sqybi_test',
-        'PASSWORD': '000000',
-        'HOST': '',
+        'NAME': helper.constants.db_name,
+        'USER': helper.constants.db_user,
+        'PASSWORD': helper.constants.db_password,
+        'HOST': helper.constants.db_host,
     }
 }
 

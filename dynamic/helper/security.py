@@ -6,7 +6,9 @@ Encrypting the password, generating token for cookie, etc.
 
 import hashlib
 import datetime
-import website.constants
+
+import helper.constants
+
 
 encrypted_password_length = hashlib.sha1().digest_size * 2
 
@@ -29,7 +31,7 @@ def encrypt_password_once(raw_password, salt=""):
 
 def generate_salt():
     hash_algorithm = hashlib.sha1()
-    hash_algorithm.update(website.constants.salt_base)
+    hash_algorithm.update(helper.constants.salt_base)
     hash_algorithm.update(str(datetime.datetime.utcnow()))
 
 
