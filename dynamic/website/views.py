@@ -3,16 +3,19 @@ import django.http
 import random
 
 import helper.constants
+import helper.security
 
 
 def home(request):
     if request.method == "GET":
         random_quote = random.choice(helper.constants.daily_quotes)
 
+        user = helper.security.get_current_user(request)
+
         context = {
             "title": "Home | SQYBI.com",
             "app": "Home",
-            "user": None,
+            "user": user,
             "request": request,
             "alert_level": helper.constants.alert_level,
             "alert_message": helper.constants.alert_message,

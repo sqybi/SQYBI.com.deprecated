@@ -70,3 +70,12 @@ def logout(request):
     response.delete_cookie("token")
     del request.session["user_name"]
     del request.session["token"]
+
+
+def register(request):
+    if request.method == "GET":
+        pass
+    elif request.method == "POST":
+        pass
+    else:
+        return django.http.HttpResponseBadRequest()
