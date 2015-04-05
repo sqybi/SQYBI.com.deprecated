@@ -13,7 +13,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-				<li{% if app == "blog" %} class="active"{% endif %}><a href="{% url "blog" %}">Blog</a></li>
+				<li{% if app == "blog" %} class="active"{% endif %}><a href="{% url "blog:index" %}">Blog</a></li>
 				<li{% if app == "about" %} class="active"{% endif %}><a href="/about">About</a></li> <!-- TODO: replace it with url tag after implemented -->
             </ul>
             {% if user == None %}
