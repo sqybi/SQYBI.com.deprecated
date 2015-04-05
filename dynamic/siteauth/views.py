@@ -21,7 +21,7 @@ def login(request):
         if user is not None:
             return redirect(helper.general.get_redirect_url(return_url, (
                 { "key": "alertlevel", "value": "warning" },
-                { "key": "alertlmsg", "value": "Already signed in" })))
+                { "key": "alertmsg", "value": "Already signed in" })))
 
         context = {
             "title": "Login | SQYBI.com",
@@ -42,14 +42,14 @@ def login(request):
         if "username" not in request.POST or "password" not in request.POST:
             return redirect(helper.general.get_redirect_url(return_url_failed, (
                 { "key": "alertlevel", "value": "error" },
-                { "key": "alertlmsg", "value": "Empty username or password is not allowed" })))
+                { "key": "alertmsg", "value": "Empty username or password is not allowed" })))
 
         # validate username and password formats
         formatted_user_name = request.POST["username"].lower()
         if not helper.constants.user_name_pattern.match(formatted_user_name):
             return redirect(helper.general.get_redirect_url(return_url_failed, (
                 { "key": "alertlevel", "value": "error" },
-                { "key": "alertlmsg", "value": "Wrong username or password" })))
+                { "key": "alertmsg", "value": "Wrong username or password" })))
         encrypted_password = helper.security.encrypt_password(request.POST["password"])
 
         # try to get user
@@ -57,7 +57,7 @@ def login(request):
         if user is None:
             return redirect(helper.general.get_redirect_url(return_url_failed, (
                 { "key": "alertlevel", "value": "error" },
-                { "key": "alertlmsg", "value": "Wrong username or password" })))
+                { "key": "alertmsg", "value": "Wrong username or password" })))
 
         # get user record
         user_record = UserRecord.objects.filter(user=user).first()
@@ -114,7 +114,7 @@ def register(request):
         if user is not None:
             return redirect(helper.general.get_redirect_url(return_url, (
                 { "key": "alertlevel", "value": "warning" },
-                { "key": "alertlmsg", "value": "Already signed in" })))
+                { "key": "alertmsg", "value": "Already signed in" })))
 
         context = {
             "title": "Register | SQYBI.com",
@@ -136,32 +136,32 @@ def register(request):
         if user is not None:
             return redirect(helper.general.get_redirect_url(return_url_failed, (
                 { "key": "alertlevel", "value": "warning" },
-                { "key": "alertlmsg", "value": "Already signed in" })))
+                { "key": "alertmsg", "value": "Already signed in" })))
 
         # make sure required fields exist
         if "username" not in request.POST or "password" not in request.POST or "displayname" not in request.POST:
             return redirect(helper.general.get_redirect_url(return_url_failed, (
                 { "key": "alertlevel", "value": "error" },
-                { "key": "alertlmsg", "value": "Required fields must not be empty" })))
+                { "key": "alertmsg", "value": "Required fields must not be empty" })))
 
         # validate username and password formats
         formatted_user_name = request.POST["username"].lower()
         if not helper.constants.user_name_pattern.match(formatted_user_name):
             return redirect(helper.general.get_redirect_url(return_url_failed, (
                 { "key": "alertlevel", "value": "error" },
-                { "key": "alertlmsg", "value": "User name in wrong format" })))
+                { "key": "alertmsg", "value": "User name in wrong format" })))
 
         if len(request.POST["password"]) < helper.constants.password_min_length:
             return redirect(helper.general.get_redirect_url(return_url_failed, (
                 { "key": "alertlevel", "value": "error" },
-                { "key": "alertlmsg", "value": "Password is too short, must contain at least " + helper.constants.password_min_length + " characters" })))
+                { "key": "alertmsg", "value": "Password is too short, must contain at least " + helper.constants.password_min_length + " characters" })))
         encrypted_password = helper.security.encrypt_password(request.POST["password"])
 
         # try to get user
         if User.objects.filter(user_name=formatted_user_name).count() > 0:
             return redirect(helper.general.get_redirect_url(return_url_failed, (
                 { "key": "alertlevel", "value": "error" },
-                { "key": "alertlmsg", "value": "User already exists" })))
+                { "key": "alertmsg", "value": "User already exists" })))
 
         # create user
         user = User(user_name=formatted_user_name, password=encrypted_password,
