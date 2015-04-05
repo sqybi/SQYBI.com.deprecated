@@ -1,6 +1,7 @@
 import datetime
 
 from django.shortcuts import render
+from django.template import RequestContext
 import django.http
 import ipware.ip
 

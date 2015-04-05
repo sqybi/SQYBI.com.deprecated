@@ -21,7 +21,7 @@ cookie_max_age_in_days = 30
 cookie_max_age_in_seconds = 60 * 60 * 24 * cookie_max_age_in_days
 
 # patterns
-user_name_pattern = re.compile(r"$[a-z0-9_]{3,20}^")
+user_name_pattern = re.compile(r"^[a-z0-9_]{3,20}$")
 
 # Database settings
 db_host = ""

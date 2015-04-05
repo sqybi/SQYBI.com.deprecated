@@ -19,6 +19,7 @@
             {% if user == None %}
                 <div class="nav navbar-nav navbar-right">
                     <form class="navbar-form navbar-right" action="{% url "login" %}?return_url={{ request.path }}" method="post">
+						{% csrf_token %}
                         <div class="form-group">
                             <input class="form-control" type="text" name="username" placeholder="User Name">
                         </div>
