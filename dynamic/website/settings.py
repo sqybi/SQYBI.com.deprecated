@@ -43,7 +43,7 @@ INSTALLED_APPS = (
     "website",
     "blog",
     "user",
-    "auth",
+    "site_auth",
 )
 
 MIDDLEWARE_CLASSES = (
