@@ -25,7 +25,7 @@
 
                             <p class="blog-post-meta">
                                 <a href="/user/{{ article.author.id }}">{{ article.author.user_name }}</a>
-                                · {{ article.create_time }}
+                                · {{ article.create_time|date:"Y-m-d H:i" }}
                             </p>
 
                             <p class="blog-post-body">
