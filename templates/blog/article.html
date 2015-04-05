@@ -19,15 +19,15 @@
             <div class="col-sm-8 blog-main">
 
                 <div class="blog-post">
-                    <h2 class="blog-post-title">{{ article.title }}</h2>
+                    <h2 class="blog-post-title">{{ selected_article.title }}</h2>
 
                     <p class="blog-post-meta">
-                        <a href="/user/{{ article.author.id }}">{{ article.author.user_name }}</a>
-                        · {{ article.create_time }}
+                        <a href="/user/{{ selected_article.author.id }}">{{ selected_article.author.user_name }}</a>
+                        · {{ selected_article.create_time }}
                     </p>
 
                     <p class="blog-post-body">
-                        {{ article.html_content|safe }}
+                        {{ selected_article.html_content|safe }}
                     </p>
                 </div>
 

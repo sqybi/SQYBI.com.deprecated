@@ -45,4 +45,4 @@ daily_quotes = [
 
 # Blog settings
 blog_article_per_page = 5
-blog_title = "三千院大小姐的紫公馆"
+blog_title = u"三千院大小姐的紫公馆"
