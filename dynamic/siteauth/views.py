@@ -91,8 +91,11 @@ def logout(request):
     response = django.http.HttpResponseRedirect(return_url)
     response.delete_cookie("user_name")
     response.delete_cookie("token")
-    del request.session["user_name"]
-    del request.session["token"]
+    try:
+        del request.session["user_name"]
+        del request.session["token"]
+    except KeyError:
+        pass
 
     return response
 
