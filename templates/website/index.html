@@ -7,13 +7,7 @@
 {% endblock %}
 
 {% block main %}
-    {% if alert_level != None %}
-        <div class="alert alert-{{ alert_level }}" role="alert">
-            {% if alert_message != None %}
-                {{ alert_message }}
-            {% endif %}
-        </div>
-    {% endif %}
+    {% include "website/partial/alert.html" %}
 
     <div class="site-wrapper">
         <div class="site-wrapper-inner">

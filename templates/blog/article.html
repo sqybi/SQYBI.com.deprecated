@@ -9,11 +9,7 @@
 {% block main %}
     <div class="container main-container">
 
-        {% if warning_message != None %}
-            <div class="alert alert-warning" role="alert">
-                {{ warning_message }}
-            </div>
-        {% endif %}
+        {% include "website/partial/alert.html" %}
 
         <div class="row">
             <div class="col-sm-8 blog-main">

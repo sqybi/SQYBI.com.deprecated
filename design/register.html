@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="SQYBI.com">
+    <meta name="author" content="sqybi">
+    <link rel="icon" href="/favicon.ico">
+
+    <title>三千院大小姐的紫公馆 | SQYBI.com</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="./css/website.css" rel="stylesheet">
+    <link href="./css/home.css" rel="stylesheet">
+    <link href="./css/auth.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">SQYBI.com</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/tweet">Tweet</a></li>
+                <li class="active"><a href="/blog">Blog</a></li>
+                <li><a href="/about">About</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">More
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/test">Test item</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Coming soon...</li>
+                        <li><a href="#">TBD</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="nav navbar-nav navbar-right">
+                <form class="navbar-form navbar-right" action="/login" method="post">
+                    <input class="form-control" type="text" name="username" placeholder="User Name">
+                    <input class="form-control" type="password" name="password" placeholder="Password">
+                    <input class="hidden" type="checkbox" name="remember" value="false">
+                    <button class="btn btn-success" type="submit">Sign in</button>
+                    <a href="/user/register">
+                        <button class="btn btn-primary" type="button">Register</button>
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="site-wrapper">
+    <div class="site-wrapper-inner">
+        <div class="cover-container">
+
+            <!--<div class="alert alert-warning" role="alert">
+                Alert: This is a test page.
+            </div>-->
+
+            <form class="form-auth" action="/register" method="post">
+                <h2 class="form-auth-heading">Enter your register information</h2>
+                <input class="form-control form-auth-first" type="text" name="username" placeholder="User Name" required autofocus>
+                <input class="form-control form-auth-middle" type="text" name="displayname" placeholder="Display Name" required>
+                <input id="inputPassword" class="form-control form-auth-last" type="password" name="password" placeholder="Password" required>
+                <div class="checkbox"><label><input id="checkboxShowPassword" type="checkbox">Show Password</label></div>
+                <input class="form-control form-auth-first" type="email" name="email" placeholder="Email address (optional)">
+                <input class="form-control form-auth-middle" type="text" name="website" placeholder="Website (optional)">
+                <input class="form-control form-auth-last" type="text" name="quote" placeholder="Quote (optional)">
+                <button class="btn btn-lg btn-primary btn-block form-auth-submit" type="submit">Sign in</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <p>
+        Powered by <a href="https://www.linode.com">Linode</a>, <a href="https://www.djangoproject.com/">Django</a>,
+        <a href="http://www.mysql.com">MySQL</a> and <a href="http://getbootstrap.com">Bootstrap</a>.<br/>
+        Owner: <a href="mailto:sqybilly@gmail.com">sqybi</a> · <a href="https://github.com/sqybi/SQYBI.com">Github
+        Project</a>
+    </p>
+
+    <p>
+        <a href="#">Back to top</a>
+    </p>
+</footer>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="./js/ie10-viewport-bug-workaround.js"></script>
+
+<script src="./js/register.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+.form-auth {
+    max-width: 600px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.form-auth .form-auth-heading {
+    margin-bottom: 20px;
+}
+
+.form-auth .checkbox {
+    margin-bottom: 10px;
+    font-weight: normal;
+}
+
+.form-auth .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.form-auth .form-control:focus {
+    z-index: 2;
+}
+
+.form-auth .form-auth-first {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.form-auth .form-auth-middle {
+    margin-bottom: -1px;
+    border-radius: 0;
+}
+.form-auth .form-auth-last {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}

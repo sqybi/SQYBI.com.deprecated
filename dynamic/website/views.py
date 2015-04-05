@@ -15,11 +15,11 @@ def home(request):
 
         context = {
             "title": "Home | SQYBI.com",
-            "app": "Home",
+            "app": "home",
             "user": user,
             "request": request,
-            "alert_level": helper.constants.alert_level,
-            "alert_message": helper.constants.alert_message,
+            "alert_level": request.GET["alertlevel"] if "alertlevel" in request.GET else helper.constants.alert_level,
+            "alert_message": request.GET["alertmsg"] if "alertmsg" in request.GET else helper.constants.alert_message,
             "daily_quote": random_quote[0],
             "daily_quote_author": random_quote[1],
         }

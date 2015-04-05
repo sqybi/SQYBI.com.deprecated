@@ -1,0 +1,31 @@
+{% extends "website/base.html" %}
+
+{% load staticfiles %}
+
+{% block stylesheets %}
+    <link href="{% static "css/home.css" %}" rel="stylesheet">
+    <link href="{% static "css/auth.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+    {% include "website/partial/alert.html" %}
+
+    <form class="form-auth" action="{% url "register" %}?return_url={{ return_url }}" method="post">
+        {% csrf_token %}
+        <h2 class="form-auth-heading">Enter your register information</h2>
+        <input class="form-control form-auth-first" type="text" name="username" placeholder="User Name" required
+               autofocus>
+        <input class="form-control form-auth-middle" type="text" name="displayname" placeholder="Display Name" required>
+        <input id="inputPassword" class="form-control form-auth-last" type="password" name="password"
+               placeholder="Password" required>
+        <div class="checkbox"><label><input id="checkboxShowPassword" type="checkbox">Show Password</label></div>
+        <input class="form-control form-auth-first" type="email" name="email" placeholder="Email address (optional)">
+        <input class="form-control form-auth-middle" type="text" name="website" placeholder="Website (optional)">
+        <input class="form-control form-auth-last" type="text" name="quote" placeholder="Quote (optional)">
+        <button class="btn btn-lg btn-primary btn-block form-auth-submit" type="submit">Sign in</button>
+    </form>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static "js/register.js" %}"></script>
+{% endblock %}

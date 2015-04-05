@@ -16,11 +16,14 @@ salt_base = "salt_base_string"
 # Warning: changes on this field may cause previous passwords unavailable!!!
 password_encrypt_round = 10
 
+# Password length limit
+password_min_length = 6
+
 # Cookie settings
 cookie_max_age_in_days = 30
 cookie_max_age_in_seconds = 60 * 60 * 24 * cookie_max_age_in_days
 
-# patterns
+# Patterns
 user_name_pattern = re.compile(r"^[a-z0-9_]{3,20}$")
 
 # Database settings

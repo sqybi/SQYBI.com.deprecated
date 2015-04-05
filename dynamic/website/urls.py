@@ -13,5 +13,6 @@ urlpatterns = patterns(
     url(r"^blog/", include("blog.urls", namespace="blog")),
     url(r"^login/", siteauth.views.login, name="login"),
     url(r"^logout/", siteauth.views.logout, name="logout"),
+    url(r"^register/", siteauth.views.register, name="register"),
     url(r"^user/(?P<user_name>.+)$", user.views.user, name="user"),
 )
