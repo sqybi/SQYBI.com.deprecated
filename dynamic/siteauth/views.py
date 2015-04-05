@@ -71,6 +71,8 @@ def logout(request):
     del request.session["user_name"]
     del request.session["token"]
 
+    return response
+
 
 def register(request):
     if request.method == "GET":
