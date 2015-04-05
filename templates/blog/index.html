@@ -20,10 +20,12 @@
                 <div class="blog-posts">
                     {% for article in selected_articles %}
                         <div class="blog-post">
-                            <h2 class="blog-post-title"><a href="/blog/article/{{ article.slug }}">{{ article.title }}</a></h2>
+                            <h2 class="blog-post-title"><a
+                                    href="/blog/article/{{ article.slug }}">{{ article.title }}</a></h2>
 
                             <p class="blog-post-meta">
-                                <a href="/user/{{ article.author.id }}">{{ article.author.user_name }}</a> · {{ article.create_time }}
+                                <a href="/user/{{ article.author.id }}">{{ article.author.user_name }}</a>
+                                · {{ article.create_time }}
                             </p>
 
                             <p class="blog-post-body">

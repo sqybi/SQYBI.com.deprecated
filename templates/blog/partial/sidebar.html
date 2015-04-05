@@ -17,7 +17,7 @@
     <div class="sidebar-module">
         <h4>Recent Posts</h4>
         <ol class="list-unstyled">
-            {% for article in all_articles|slice:":5" %}
+            {% for article in recent_articles %}
                 <li><a href="/blog/article/{{ article.slug }}/">{{ article.title }}</a></li>
             {% endfor %}
         </ol>
