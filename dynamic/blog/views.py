@@ -4,6 +4,7 @@ import django.http
 from blog.models import BlogArticleItem
 import helper.constants
 import helper.security
+import helper.auth
 
 
 def index(request, page="1"):
@@ -27,7 +28,7 @@ def index(request, page="1"):
         selected_articles = list(
             BlogArticleItem.objects.filter(is_shown=True).order_by("id").reverse()[start_article:end_article])
 
-        user = helper.security.get_current_user(request)
+        user = helper.auth.get_current_user(request)
 
         context = {
             "title": helper.constants.blog_title + " | SQYBI.com",
@@ -64,7 +65,7 @@ def article(request, article_id=None, article_slug=None):
             "id").reverse().first()
         next_article = BlogArticleItem.objects.filter(id__gt=selected_article.id, is_shown=True).order_by("id").first()
 
-        user = helper.security.get_current_user(request)
+        user = helper.auth.get_current_user(request)
 
         context = {
             "title": selected_article.title + " | " + helper.constants.blog_title + " | SQYBI.com",

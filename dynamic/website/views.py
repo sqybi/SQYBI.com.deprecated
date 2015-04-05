@@ -4,13 +4,14 @@ import random
 
 import helper.constants
 import helper.security
+import helper.auth
 
 
 def home(request):
     if request.method == "GET":
         random_quote = random.choice(helper.constants.daily_quotes)
 
-        user = helper.security.get_current_user(request)
+        user = helper.auth.get_current_user(request)
 
         context = {
             "title": "Home | SQYBI.com",
