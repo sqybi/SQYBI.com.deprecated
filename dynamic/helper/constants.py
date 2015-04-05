@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import re
+
 """
 Settings for the whole website.
 
@@ -10,6 +12,17 @@ for customization and security reasons.
 # Base string for salt generator
 salt_base = "salt_base_string"
 
+# Encrypt round for password
+# Warning: changes on this field may cause previous passwords unavailable!!!
+password_encrypt_round = 10
+
+# Cookie settings
+cookie_max_age_in_days = 30
+cookie_max_age_in_seconds = 60 * 60 * 24 * cookie_max_age_in_days
+
+# patterns
+user_name_pattern = re.compile(r"$[a-z0-9_]{3,20}^")
+
 # Database settings
 db_host = ""
 db_name = "website_test"
@@ -17,7 +30,11 @@ db_user = "sqybi_test"
 db_password = "000000"
 
 # Django secret key
-django_secret_key = '=erw^b=h7gqntcy%x%fqg*f%mj3hl8odxg7kp@h6hwu647blh$'
+django_secret_key = "=erw^b=h7gqntcy%x%fqg*f%mj3hl8odxg7kp@h6hwu647blh$"
+
+# Region and format settings
+time_zone = "Asia/Shanghai"
+language_code = "zh-cn"
 
 # Website alert
 alert_level = None
@@ -40,6 +57,10 @@ daily_quotes = [
     (
         u"""人类一生中最绚烂的时刻，就是面对着失败的命运顽强抗争，最终彻底地失败。""",
         u"sqybi"
+    ),
+    (
+        u"""在虚构的故事中寻求真实感的人脑袋一定有问题。""",
+        u"《凉宫春日的忧郁》"
     ),
 ]
 

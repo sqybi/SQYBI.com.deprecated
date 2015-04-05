@@ -21,10 +21,10 @@
                     {% for article in selected_articles %}
                         <div class="blog-post">
                             <h2 class="blog-post-title"><a
-                                    href="/blog/article/{{ article.slug }}">{{ article.title }}</a></h2>
+                                    href="{% url "blog:article" article.slug %}">{{ article.title }}</a></h2>
 
                             <p class="blog-post-meta">
-                                <a href="/user/{{ article.author.id }}">{{ article.author.user_name }}</a>
+                                <a href="{% url "user" selected_article.author.user_name %}">{{ article.author.display_name }}</a>
                                 · {{ article.create_time|date:"Y-m-d H:i" }}
                             </p>
 
@@ -38,10 +38,10 @@
                 <nav>
                     <ul class="pager">
                         {% if prev_page != None %}
-                            <li><a href="/blog/{{ prev_page }}">Previous</a></li>
+                            <li><a href="{% url "blog:index" prev_page %}">Previous</a></li>
                         {% endif %}
                         {% if next_page != None %}
-                            <li><a href="/blog/{{ next_page }}">Next</a></li>
+                            <li><a href="{% url "blog:index" next_page %}">Next</a></li>
                         {% endif %}
                     </ul>
                 </nav>
