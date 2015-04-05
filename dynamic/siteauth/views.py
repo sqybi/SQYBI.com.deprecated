@@ -86,7 +86,7 @@ def login(request):
 def logout(request):
     # all kinds of request methods are acceptable
 
-    return_url = request.GET["return_url"] if "return_url" in request.GET else "/",
+    return_url = request.GET["return_url"] if "return_url" in request.GET else "/"
 
     response = redirect(return_url)
     response.delete_cookie("user_name")
