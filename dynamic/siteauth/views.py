@@ -154,7 +154,7 @@ def register(request):
         if len(request.POST["password"]) < helper.constants.password_min_length:
             return redirect(helper.general.get_redirect_url(return_url_failed, (
                 { "key": "alertlevel", "value": "error" },
-                { "key": "alertmsg", "value": "Password is too short, must contain at least " + helper.constants.password_min_length + " characters" })))
+                { "key": "alertmsg", "value": "Password is too short, must contain at least " + str(helper.constants.password_min_length) + " characters" })))
         encrypted_password = helper.security.encrypt_password(request.POST["password"])
 
         # try to get user
@@ -170,15 +170,13 @@ def register(request):
         user.email = request.POST["email"] if "email" in request.POST else ""
         user.website = request.POST["website"] if "website" in request.POST else ""
         user.description = request.POST["quote"] if "quote" in request.POST else ""
+        user.save()
 
         # create user record
         user_record = UserRecord(user=user, create_time=datetime.datetime.utcnow())
         user_record.last_login_ip = ipware.ip.get_real_ip(request)
         user_record.last_login_time = datetime.datetime.utcnow()
         user_record.cookie_token = helper.security.generate_cookie_token(user.user_name)
-
-        # save models
-        user.save()
         user_record.save()
 
         # set session info
