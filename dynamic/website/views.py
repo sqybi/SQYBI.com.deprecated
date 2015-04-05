@@ -12,6 +12,7 @@ def home(request):
         context = {
             "title": "Home | SQYBI.com",
             "app": "Home",
+            "user": None,
             "alert_level": helper.constants.alert_level,
             "alert_message": helper.constants.alert_message,
             "daily_quote": random_quote[0],

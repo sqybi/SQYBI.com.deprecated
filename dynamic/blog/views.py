@@ -29,6 +29,7 @@ def index(request, page="1"):
         context = {
             "title": helper.constants.blog_title + " | SQYBI.com",
             "app": "blog",
+            "user": None,
             "alert_level": helper.constants.alert_level,
             "alert_message": helper.constants.alert_message,
             "recent_articles": recent_articles,
@@ -62,6 +63,7 @@ def article(request, article_id=None, article_slug=None):
         context = {
             "title": selected_article.title + " | " + helper.constants.blog_title + " | SQYBI.com",
             "app": "blog",
+            "user": None,
             "alert_level": helper.constants.alert_level,
             "alert_message": helper.constants.alert_message,
             "recent_articles": recent_articles,
