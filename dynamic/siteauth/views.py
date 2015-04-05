@@ -1,7 +1,7 @@
 import datetime
 import urllib
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import django.http
 import ipware.ip
 
@@ -18,7 +18,7 @@ def login(request):
         user = helper.auth.get_current_user(request)
 
         if user is not None:
-            return django.http.HttpResponseRedirect(return_url + "?alertlevel=warning&alertmsg=" + urllib.quote_plus(
+            return redirect(return_url + "?alertlevel=warning&alertmsg=" + urllib.quote_plus(
                 "Already signed in"))
 
         context = {
@@ -38,20 +38,20 @@ def login(request):
 
         # make sure user name and password exist
         if "username" not in request.POST or "password" not in request.POST:
-            return django.http.HttpResponseRedirect(return_url_failed + "?alertlevel=error&alertmsg=" + urllib.quote_plus(
+            return redirect(return_url_failed + "?alertlevel=error&alertmsg=" + urllib.quote_plus(
                 "Empty username or password is not allowed"))
 
         # validate username and password formats
         formatted_user_name = request.POST["username"].lower()
         if not helper.constants.user_name_pattern.match(formatted_user_name):
-            return django.http.HttpResponseRedirect(return_url_failed + "?alertlevel=error&alertmsg=" + urllib.quote_plus(
+            return redirect(return_url_failed + "?alertlevel=error&alertmsg=" + urllib.quote_plus(
                 "Wrong username or password"))
         encrypted_password = helper.security.encrypt_password(request.POST["password"])
 
         # try to get user
         user = User.objects.filter(user_name=formatted_user_name, password=encrypted_password).first()
         if user is None:
-            return django.http.HttpResponseRedirect(return_url_failed + "?alertlevel=error&alertmsg=" + urllib.quote_plus(
+            return redirect(return_url_failed + "?alertlevel=error&alertmsg=" + urllib.quote_plus(
                 "Wrong username or password"))
 
         # get user record
@@ -70,7 +70,7 @@ def login(request):
         request.session["user_name"] = formatted_user_name
         request.session["token"] = user_record.cookie_token
 
-        response = django.http.HttpResponseRedirect(return_url_success)
+        response = redirect(return_url_success)
 
         if "remember" in request.POST:
             response.set_cookie("user_name", formatted_user_name, max_age=helper.constants.cookie_max_age_in_seconds,
@@ -88,7 +88,7 @@ def logout(request):
 
     return_url = request.GET["return_url"] if "return_url" in request.GET else "/",
 
-    response = django.http.HttpResponseRedirect(return_url)
+    response = redirect(return_url)
     response.delete_cookie("user_name")
     response.delete_cookie("token")
     try:
@@ -107,7 +107,7 @@ def register(request):
         user = helper.auth.get_current_user(request)
 
         if user is not None:
-            return django.http.HttpResponseRedirect(return_url + "?alertlevel=warning&alertmsg=" + urllib.quote_plus(
+            return redirect(return_url + "?alertlevel=warning&alertmsg=" + urllib.quote_plus(
                 "Already signed in"))
 
         context = {
@@ -128,27 +128,27 @@ def register(request):
         user = helper.auth.get_current_user(request)
 
         if user is not None:
-            return django.http.HttpResponseRedirect(return_url_failed + "?alertlevel=warning&alertmsg=" + urllib.quote_plus(
+            return redirect(return_url_failed + "?alertlevel=warning&alertmsg=" + urllib.quote_plus(
                 "Already signed in"))
 
         # make sure required fields exist
         if "username" not in request.POST or "password" not in request.POST or "displayname" not in request.POST:
-            return django.http.HttpResponseRedirect(return_url_failed + "?alertlevel=error&alertmsg=" + urllib.quote_plus(
+            return redirect(return_url_failed + "?alertlevel=error&alertmsg=" + urllib.quote_plus(
                 "Required fields must not be empty"))
 
         # validate username and password formats
         formatted_user_name = request.POST["username"].lower()
         if not helper.constants.user_name_pattern.match(formatted_user_name):
-            return django.http.HttpResponseRedirect(return_url_failed + "?alertlevel=error&alertmsg=" + urllib.quote_plus(
+            return redirect(return_url_failed + "?alertlevel=error&alertmsg=" + urllib.quote_plus(
                 "User name in wrong format"))
         if len(request.POST["password"]) < helper.constants.password_min_length:
-            return django.http.HttpResponseRedirect(return_url_failed + "?alertlevel=error&alertmsg=" + urllib.quote_plus(
+            return redirect(return_url_failed + "?alertlevel=error&alertmsg=" + urllib.quote_plus(
                 "Password is too short, must contain at least " + helper.constants.password_min_length + " characters"))
         encrypted_password = helper.security.encrypt_password(request.POST["password"])
 
         # try to get user
         if User.objects.filter(user_name=formatted_user_name).count() > 0:
-            return django.http.HttpResponseRedirect(return_url_failed + "?alertlevel=error&alertmsg=" + urllib.quote_plus(
+            return redirect(return_url_failed + "?alertlevel=error&alertmsg=" + urllib.quote_plus(
                 "User already exists"))
         # create user
         user = User(user_name=formatted_user_name, password=encrypted_password, display_name=request.POST["displayname"])
@@ -172,7 +172,7 @@ def register(request):
         request.session["token"] = user_record.cookie_token
 
         # do not set cookie for response
-        response = django.http.HttpResponseRedirect(return_url_success)
+        response = redirect(return_url_success)
         return response
     else:
         return django.http.HttpResponseBadRequest()

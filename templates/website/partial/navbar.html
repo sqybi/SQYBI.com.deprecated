@@ -26,7 +26,7 @@
                             <li><a href="{% url "login" %}?return_url={{ request.path }}">Login</a></li>
                             <li><a href="{% url "register" %}?return_url={{ request.path }}">Register</a></li>
                         {% else %}
-                            <li><a href="{% url "logout" %}">Logout</a></li>
+                            <li><a href="{% url "logout" %}?return_url={{ request.path }}">Logout</a></li>
                         {% endif %}
                     </ul>
                 </li>
@@ -55,7 +55,7 @@
                             <li><a href="{% url "user" user_name=user.user_name %}">User Page</a></li>
                             <li><a href="/settings">Settings</a></li> <!-- TODO: replace it with url tag after implemented -->
                             <li class="divider"></li>
-                            <li><a href="{% url "logout" %}">Logout</a></li>
+                            <li><a href="{% url "logout" %}?return_url={{ request.path }}">Logout</a></li>
                         </ul>
                     </li>
                 </ul>
