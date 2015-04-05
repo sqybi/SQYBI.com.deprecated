@@ -31,3 +31,5 @@ def get_redirect_url(base_url, parameters):
         base_url += urllib.quote_plus(parameter["key"]) + '=' + urllib.quote_plus(parameter["value"])
 
         first_arg = False
+
+    return base_url
