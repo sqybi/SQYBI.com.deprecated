@@ -20,8 +20,8 @@
                         More <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu">
+                        <!--<li class="divider"></li>-->
                         <li class="dropdown-header">Site Features</li>
-                        <li class="divider"></li>
                         {% if user == None %}
                             <li><a href="{% url "login" %}?return_url={{ request.path }}">Login</a></li>
                             <li><a href="{% url "register" %}?return_url={{ request.path }}">Register</a></li>
