@@ -5,6 +5,7 @@ import random
 import helper.constants
 import helper.security
 import helper.auth
+import helper.general
 
 
 def home(request):
@@ -18,8 +19,8 @@ def home(request):
             "app": "home",
             "user": user,
             "request": request,
-            "alert_level": request.GET["alertlevel"] if "alertlevel" in request.GET else helper.constants.alert_level,
-            "alert_message": request.GET["alertmsg"] if "alertmsg" in request.GET else helper.constants.alert_message,
+            "alert_level": helper.general.get_alert_level(request),
+            "alert_message": helper.general.get_alert_message(request),
             "daily_quote": random_quote[0],
             "daily_quote_author": random_quote[1],
         }

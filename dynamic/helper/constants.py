@@ -42,6 +42,11 @@ language_code = "zh-cn"
 # Website alert
 alert_level = None
 alert_message = None
+ALERT_LEVELS = {
+    "error": "danger",
+    "warning": "warning",
+    "info": "info",
+}
 
 # Daily Quotes
 daily_quotes = [

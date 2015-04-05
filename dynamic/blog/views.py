@@ -5,6 +5,7 @@ from blog.models import BlogArticleItem
 import helper.constants
 import helper.security
 import helper.auth
+import helper.general
 
 
 def index(request, page="1"):
@@ -35,8 +36,8 @@ def index(request, page="1"):
             "app": "blog",
             "user": user,
             "request": request,
-            "alert_level": request.GET["alertlevel"] if "alertlevel" in request.GET else helper.constants.alert_level,
-            "alert_message": request.GET["alertmsg"] if "alertmsg" in request.GET else helper.constants.alert_message,
+            "alert_level": helper.general.get_alert_level(request),
+            "alert_message": helper.general.get_alert_message(request),
             "recent_articles": recent_articles,
             "selected_articles": selected_articles,
             "prev_page": None if page_num <= 1 else str(page_num - 1),
@@ -72,8 +73,8 @@ def article(request, article_id=None, article_slug=None):
             "app": "blog",
             "user": user,
             "request": request,
-            "alert_level": request.GET["alertlevel"] if "alertlevel" in request.GET else helper.constants.alert_level,
-            "alert_message": request.GET["alertmsg"] if "alertmsg" in request.GET else helper.constants.alert_message,
+            "alert_level": helper.general.get_alert_level(request),
+            "alert_message": helper.general.get_alert_message(request),
             "recent_articles": recent_articles,
             "selected_article": selected_article,
             "prev_article": previous_article,
