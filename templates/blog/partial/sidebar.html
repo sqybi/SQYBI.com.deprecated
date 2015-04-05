@@ -18,7 +18,7 @@
         <h4>Recent Posts</h4>
         <ol class="list-unstyled">
             {% for article in recent_articles %}
-                <li><a href="{% url "blog:article" article.slug %}">{{ article.title }}</a></li>
+                <li><a href="{% url "blog:article" article_slug=article.slug %}">{{ article.title }}</a></li>
             {% endfor %}
         </ol>
     </div>
