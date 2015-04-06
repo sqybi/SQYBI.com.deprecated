@@ -16,9 +16,9 @@ def user(request, user_path=None):
 
         user = helper.auth.get_current_user(request)
 
-        recent_blog_articles = user.blogarticleitems.order_by("id").reverse()[:helper.constants.user_recent_blog_article_count]
+        recent_blog_articles = user.blogarticleitems.filter(is_shown=True).order_by("id").reverse()[:helper.constants.user_recent_blog_article_count]
 
-        recent_blog_comments = user.blogcommentitems.order_by("id").reverse()[:helper.constants.user_recent_blog_comment_count]
+        recent_blog_comments = user.blogcommentitems.filter(article__is_shown=True).order_by("id").reverse()[:helper.constants.user_recent_blog_comment_count]
 
         context = {
             "title": user.display_name + " | User Page | SQYBI.com",

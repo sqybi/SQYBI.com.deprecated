@@ -37,21 +37,25 @@
             <div class="col-sm-3 col-sm-offset-1 user-sidebar">
 
                 <div class="sidebar-module">
-                    <h4>Recent Posts</h4>
-                    <ol class="list-unstyled">
-                        <li><a href="#">测试博客</a></li>
-                        <li><a href="#">Another blog post</a></li>
-                        <li><a href="#">New feature</a></li>
-                    </ol>
+                    <h4>Recent Blog Posts</h4>
+                    {% if recent_blog_articles != None %}
+                        <ol class="list-unstyled">
+                            {% for recent_blog_article in recent_blog_articles %}
+                                <li><a href="{% url "blog:article" recent_blog_article.slug %}">{{ recent_blog_article.title }}</a></li>
+                            {% endfor %}
+                        </ol>
+                    {% endif %}
                 </div>
 
                 <div class="sidebar-module">
-                    <h4>Recent Comments</h4>
-                    <ol class="list-unstyled">
-                        <li><a href="#">测试博客</a></li>
-                        <li><a href="#">Another blog post</a></li>
-                        <li><a href="#">New feature</a></li>
-                    </ol>
+                    <h4>Recent Blog Comments</h4>
+                    {% if recent_blog_comments != None %}
+                        <ol class="list-unstyled">
+                            {% for recent_blog_comment in recent_blog_comments %}
+                                <li><a href="{% url "blog:article" recent_blog_comment.article.slug %}">{{ recent_blog_comment.content }}</a></li>
+                            {% endfor %}
+                        </ol>
+                    {% endif %}
                 </div>
 
             </div>
