@@ -52,6 +52,7 @@ cookie_max_age_in_days = 30
 cookie_max_age_in_seconds = 60 * 60 * 24 * cookie_max_age_in_days
 
 # Patterns
+# Only '_' in user name will be converted to '-' in url, so please do not use other symbols such as '.' and ';'
 user_name_pattern = re.compile(r"^[a-z0-9_]{3,20}$")
 
 # Region and format settings
@@ -94,3 +95,7 @@ daily_quotes = [
 # Blog settings
 blog_article_per_page = 5
 blog_title = u"三千院大小姐的紫公馆"
+
+# User page settings
+user_recent_blog_article_count = 5
+user_recent_blog_comment_count = 5

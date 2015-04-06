@@ -16,5 +16,5 @@ urlpatterns = patterns(
     url(r"^logout/", siteauth.views.logout, name="logout"),
     url(r"^register/", siteauth.views.register, name="register"),
     url(r"^about/", about.views.index, name="about"),
-    url(r"^user/(?P<user_name>.+)$", user.views.user, name="user"),
+    url(r"^user/(?P<user_path>[a-zA-Z0-9\-]+)$", user.views.user, name="user"),
 )
