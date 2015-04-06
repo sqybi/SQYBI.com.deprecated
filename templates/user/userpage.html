@@ -1,10 +1,62 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+{% extends "website/base.html" %}
 
-</body>
-</html>
+{% load staticfiles %}
+
+{% block stylesheets %}
+    <link href="{% static "css/userpage.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+    <div class="container main-container">
+
+        {% include "website/partial/alert.html" %}
+
+        <div class="row">
+
+            <div class="col-sm-8 user-main">
+
+                <h2 class="user-display-name">{{ user.display_name }}</h2>
+
+                {% if user.description != "" %}
+                    <div class="well">
+                        {{ user.description }}
+                    </div>
+                {% endif %}
+
+                <div class="user-information">
+                    <p><span class="glyphicon glyphicon-user"></span> {{ user.user_name }}</p>
+                    {% if user.email != "" %}
+                        <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ user.email }}</p>
+                    {% endif %}
+                    {% if user.website != "" %}
+                        <p><span class="glyphicon glyphicon-home" aria-hidden="true"></span> <a href="{{ user.website }}">{{ user.website }}</a></p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-sm-3 col-sm-offset-1 user-sidebar">
+
+                <div class="sidebar-module">
+                    <h4>Recent Posts</h4>
+                    <ol class="list-unstyled">
+                        <li><a href="#">测试博客</a></li>
+                        <li><a href="#">Another blog post</a></li>
+                        <li><a href="#">New feature</a></li>
+                    </ol>
+                </div>
+
+                <div class="sidebar-module">
+                    <h4>Recent Comments</h4>
+                    <ol class="list-unstyled">
+                        <li><a href="#">测试博客</a></li>
+                        <li><a href="#">Another blog post</a></li>
+                        <li><a href="#">New feature</a></li>
+                    </ol>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}
