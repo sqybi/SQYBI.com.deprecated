@@ -21,7 +21,7 @@ def user(request, user_path=None):
         recent_blog_comments = user.blogcommentitems.filter(article__is_shown=True).order_by("id").reverse()[:helper.constants.user_recent_blog_comment_count]
 
         context = {
-            "title": user.display_name + " | User Page | SQYBI.com",
+            "title": display_user.display_name + " | User Page | SQYBI.com",
             "app": "user",
             "user": user,
             "request": request,
