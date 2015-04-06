@@ -1,0 +1,31 @@
+/*
+ * Main column and sidebar layout
+ */
+
+.about-main {
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.about-content {
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.about-subtitle {
+    margin-top: 20px;
+}
+
+.about-carousel {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*
+ * Popover width
+ */
+
+.popover{
+    max-width: 100%; // Max Width of the popover (depending on the container!)
+}
