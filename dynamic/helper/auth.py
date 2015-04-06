@@ -27,11 +27,14 @@ def get_current_user(request):
         user = result[0]
         user_record = result[1]
         if user is not None:
-            # get new cookie token and update
+            # not exist in session, but exist in cookie: get new token and update
             user_record.cookie_token = helper.security.generate_cookie_token(user.user_name)
             user_record.save()
             request.COOKIES["token"] = user_record.cookie_token
             request.session["token"] = user_record.cookie_token
+
+    if user is not None:
+        user.user_path = user_name.replace('_', '-')
 
     return user
 
