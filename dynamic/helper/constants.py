@@ -9,8 +9,36 @@ Administrator should modify these settings before deploy this web application to
 for customization and security reasons.
 """
 
+# *********************
+# * Dev/Prod settings *
+# *********************
+#
+# Here are the Settings which should be different for dev and prod environments
+# Remember to modify before move to production!!!
+#
+
 # Base string for salt generator
 salt_base = "salt_base_string"
+
+# Database settings
+db_host = ""
+db_name = "website_test"
+db_user = "sqybi_test"
+db_password = "000000"
+
+# Django secret key
+django_secret_key = "=erw^b=h7gqntcy%x%fqg*f%mj3hl8odxg7kp@h6hwu647blh$"
+
+# Debug mode
+IS_DEBUG_MODE = True
+
+
+# ********************
+# * Website Settings *
+# ********************
+#
+# Customized settings for the website
+#
 
 # Encrypt round for password
 # Warning: changes on this field may cause previous passwords unavailable!!!
@@ -25,15 +53,6 @@ cookie_max_age_in_seconds = 60 * 60 * 24 * cookie_max_age_in_days
 
 # Patterns
 user_name_pattern = re.compile(r"^[a-z0-9_]{3,20}$")
-
-# Database settings
-db_host = ""
-db_name = "website_test"
-db_user = "sqybi_test"
-db_password = "000000"
-
-# Django secret key
-django_secret_key = "=erw^b=h7gqntcy%x%fqg*f%mj3hl8odxg7kp@h6hwu647blh$"
 
 # Region and format settings
 time_zone = "Asia/Shanghai"

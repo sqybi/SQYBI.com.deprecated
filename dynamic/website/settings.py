@@ -24,11 +24,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = helper.constants.django_secret_key
 
 # SECURITY WARNING: don"t run with debug turned on in production!
-DEBUG = True
+DEBUG = helper.constants.IS_DEBUG_MODE
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = helper.constants.IS_DEBUG_MODE
 
 ALLOWED_HOSTS = []
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 
 # Application definition
@@ -72,6 +74,7 @@ DATABASES = {
         "HOST": helper.constants.db_host,
     }
 }
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
