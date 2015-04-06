@@ -1,3 +1,4 @@
+from django.shortcuts import render
 import django.http
 
 import helper.auth
@@ -16,5 +17,7 @@ def index(request):
             "alert_level": helper.general.get_alert_level(request),
             "alert_message": helper.general.get_alert_message(request),
         }
+
+        return render(request, "about/index.html", context)
     else:
         raise django.http.Http404
