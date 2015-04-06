@@ -1,0 +1,143 @@
+{% extends "website/base.html" %}
+
+{% load staticfiles %}
+
+{% block stylesheets %}
+    <link href="{% static "css/about.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+    <div class="container main-container">
+
+        {% include "website/partial/alert.html" %}
+
+        <div class="row">
+            <div class="col-sm-12 about-main">
+
+                <h1>About Page</h1>
+
+                <div class="about-content">
+                    <blockquote>
+                        经过接近两年的 <del>各种拖延</del> 艰苦奋斗，SQYBI.com终于回来了！<br/>
+                        希望并没有让你等得太久 :)<br/>
+                        现在的版本功能还很不完善，不过都会慢慢加上去的。代码都在<a href="https://github.com/">GitHub</a>上，有兴趣的同学可以去<a
+                            href="https://github.com/sqybi/SQYBI.com">这里</a>读这个程序的源码，去<a
+                            href="https://github.com/sqybi/SQYBI.com/issues">这里</a>提交你发现的bug。
+                    </blockquote>
+
+                    <h3 class="about-subtitle">Who is sqybi?</h3>
+                    <p>
+                        他是一个弱弱的程序员，喜欢尝试各种新技术。
+                    </p>
+                    <p>
+                        他现在在微软中国工作。
+                    </p>
+                    <p>
+                        他的业余时间大部分用来打炉石和FIFA，偶尔写写代码或者和朋友们出去走走。
+                    </p>
+                    <p>
+                        喜欢的东西有：<br/>
+                        <span class="btn-success">炉石传说</span> · <span class="btn-success">FIFA</span> ·
+                        <span class="btn-success">各种其他游戏</span> · <span class="btn-success">日麻</span> ·
+                        <span class="btn-success">好朋友</span> · <span class="btn-success">动画/漫画</span> ·
+                        <span class="btn-success">萌妹纸</span> · <span class="btn-success">电子产品</span> ·
+                        <span class="btn-success">好吃的</span> · <span class="btn-success">写代码</span>
+                    </p>
+                    <p>
+                        讨厌的东西有：<br/>
+                        <span class="btn-danger">背诵</span> · <span class="btn-danger">减肥</span> ·
+                        <span class="btn-danger">键盘党</span> · <span class="btn-danger">失败</span> ·
+                        <span class="btn-danger">无聊</span> · <span class="btn-danger">on call</span> ·
+                        <span class="btn-danger">断网</span> · <span class="btn-danger">改bug</span>
+                    </p>
+
+                    <h3 class="about-subtitle">Something about this site</h3>
+                    <p>
+                        这个网站由以下服务/技术提供：
+                        <a href="https://www.linode.com"><span class="btn-primary">Linode</span></a> ·
+                        <a href="https://www.python.org/"><span class="btn-primary">Python</span></a> ·
+                        <a href="https://www.djangoproject.com/"><span class="btn-primary">Django</span></a> ·
+                        <a href="http://www.mysql.com"><span class="btn-primary">MySQL</span></a> ·
+                        <a herf="https://jquery.com/"><span class="btn-primary">jQuery</span></a> ·
+                        <a href="http://getbootstrap.com"><span class="btn-primary">Bootstrap</span></a><br/>
+                        你也可以在任何一页的页脚看到这些说明。
+                    </p>
+                    <p>
+                        现在你看到的这个版本的网站在2014年8月14日被第一次commit。在这之前这个网站还曾经有一个<a href="http://rubyonrails.org/">Ruby on Rails</a>版本的前身，但是后来因为sqybi觉得RoR太难学而被抛弃了。
+                    </p>
+                    <p>
+                        虽然commit的时间很早，但是由于 <del>sqybi很懒</del> 某些不可告人的原因，网站实际上是从2015年4月初开始正式进入开发阶段的。
+                    </p>
+                    <p>
+                        网站会一直添加新功能，更新频率取决于sqybi <del>有多懒</del> 有多少空闲时间。
+                    </p>
+                    <p>
+                        <del>好吧其实他真的很懒。</del>
+                    </p>
+
+                    <h3 class="about-subtitle">sqybi @ Everywhere</h3>
+                    <p>
+                        <a href="http://sqybi.com"><button class="btn btn-success">Home Page</button></a>
+                        <a href="https://github.com/sqybi"><button class="btn btn-primary">GitHub</button></a>
+                        <a href="http://community.topcoder.com/tc?module=MemberProfile&cr=22692587"><button class="btn btn-primary">Topcoder</button></a>
+                        <a href="http://codeforces.com/profile/sqybi"><button class="btn btn-default">Codeforces</button></a>
+                        <a href="https://www.linkedin.com/in/sqybi"><button class="btn btn-primary">LinkedIn</button></a>
+                        <a href="https://twitter.com/sqybi"><button class="btn btn-default">Twitter</button></a>
+                        <a href="https://instagram.com/sqybi/"><button class="btn btn-primary">Instagram</button></a>
+                        <a id="psnprofiles" href="http://psnprofiles.com/sqybi" data-toggle="popover" data-trigger="hover focus" data-placement="top" data-html="true" data-animation="true" data-content=""><button class="btn btn-primary">PSN Profiles</button></a>
+                    </p>
+                    <p>
+                        <a href="http://www.zhihu.com/people/sqybi"><button class="btn btn-primary">知乎</button></a>
+                        <a href="http://www.guokr.com/i/0492216944/"><button class="btn btn-primary">果壳</button></a>
+                        <a href="http://www.douban.com/people/sqybi/"><button class="btn btn-default">豆瓣</button></a>
+                        <a href="http://weibo.com/sqybi/"><button class="btn btn-primary">新浪微博</button></a>
+                        <a href="http://fanfou.com/sqybi"><button class="btn btn-default">饭否</button></a>
+                        <a href="http://space.bilibili.com/105879"><button class="btn btn-primary">哔哩哔哩</button></a>
+                        <a href="http://www.acfun.tv/u/sqybi"><button class="btn btn-default">AcFun</button></a>
+                    </p>
+
+                    <h3 class="about-subtitle">sqybi's Favourate</h3>
+                    <div id="favourateCarousel" class="carousel slide about-carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#favourateCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#favourateCarousel" data-slide-to="1"></li>
+                            <li data-target="#favourateCarousel" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="active item">
+                                <img src="{% static "about/img/carousel_01.jpg" %}" border="0" alt="">
+                                <div class="carousel-caption">
+                                </div>
+                            </div>
+                            <div class="item">
+                                <img src="{% static "about/img/carousel_02.jpg" %}" border="0" alt="">
+                                <div class="carousel-caption">
+                                </div>
+                            </div>
+                            <div class="item">
+                                <img src="{% static "about/img/carousel_03.jpg" %}" border="0" alt="">
+                                <div class="carousel-caption">
+                                </div>
+                            </div>
+                        </div>
+                        <a class="carousel-control left" href="#favourateCarousel" data-slide="prev"></a>
+                        <a class="carousel-control right" href="#favourateCarousel" data-slide="next"></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $('#psnprofiles').attr('data-content', '<img src="http://card.psnprofiles.com/1/sqybi.png" border="0">')
+        $('#psnprofiles').popover('show');
+        $('#psnprofiles').popover('hide');
+        $('#favourateCarousel').carousel({
+            interval: 10000
+        })
+    </script>
+{% endblock %}
