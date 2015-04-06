@@ -30,7 +30,11 @@ h6, .h6 {
 }
 
 .navbar-right .dropdown-menu {
-    text-align: center;
+    text-align: left;
+}
+
+.navbar-right .dropdown-menu .glyphicon {
+    margin-right: 10px;
 }
 
 /*
