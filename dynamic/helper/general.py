@@ -33,3 +33,10 @@ def get_redirect_url(base_url, parameters):
         first_arg = False
 
     return base_url
+
+
+def get_user_path(user):
+    if user is not None:
+        return user.user_name.replace('_', '-')
+    else:
+        return None

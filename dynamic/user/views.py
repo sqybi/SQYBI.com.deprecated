@@ -24,6 +24,7 @@ def user(request, user_path=None):
             "title": user.display_name + " | User Page | SQYBI.com",
             "app": "user",
             "user": user,
+            "user_path": helper.general.get_user_path(user),
             "request": request,
             "alert_level": helper.general.get_alert_level(request),
             "alert_message": helper.general.get_alert_message(request),
