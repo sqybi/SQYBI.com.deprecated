@@ -52,7 +52,7 @@
                             {{ user.display_name }} <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="{% url "user" user_path=user_path %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> User Page</a></li>
+                            <li><a href="{% url "user" user_path=user.user_path %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> User Page</a></li>
                             <li><a href="/settings"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Settings</a></li> <!-- TODO: replace it with url tag after implemented -->
                             <li class="divider"></li>
                             <li><a href="{% url "logout" %}?return_url={{ request.path }}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Logout</a></li>

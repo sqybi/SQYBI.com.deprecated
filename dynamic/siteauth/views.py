@@ -27,7 +27,6 @@ def login(request):
             "title": "Login | SQYBI.com",
             "app": "auth",
             "user": user,
-            "user_path": helper.general.get_user_path(user),
             "request": request,
             "alert_level": helper.general.get_alert_level(request),
             "alert_message": helper.general.get_alert_message(request),
@@ -121,7 +120,6 @@ def register(request):
             "title": "Register | SQYBI.com",
             "app": "auth",
             "user": user,
-            "user_path": helper.general.get_user_path(user),
             "request": request,
             "alert_level": helper.general.get_alert_level(request),
             "alert_message": helper.general.get_alert_message(request),
@@ -168,6 +166,7 @@ def register(request):
         # create user
         user = User(user_name=formatted_user_name, password=encrypted_password,
                     display_name=request.POST["displayname"])
+        user.user_path = helper.general.get_user_path(formatted_user_name)
         user.is_admin = False
         user.email = request.POST["email"] if "email" in request.POST else ""
         user.website = request.POST["website"] if "website" in request.POST else ""

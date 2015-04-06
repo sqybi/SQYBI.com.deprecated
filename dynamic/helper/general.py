@@ -35,8 +35,5 @@ def get_redirect_url(base_url, parameters):
     return base_url
 
 
-def get_user_path(user):
-    if user is not None:
-        return user.user_name.replace('_', '-')
-    else:
-        return None
+def get_user_path(user_name):
+    return user_name.replace('_', '-')

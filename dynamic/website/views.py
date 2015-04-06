@@ -18,7 +18,6 @@ def home(request):
             "title": "Home | SQYBI.com",
             "app": "home",
             "user": user,
-            "user_path": helper.general.get_user_path(user),
             "request": request,
             "alert_level": helper.general.get_alert_level(request),
             "alert_message": helper.general.get_alert_message(request),

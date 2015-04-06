@@ -6,6 +6,7 @@ import helper.security
 class User(models.Model):
     user_name = models.CharField(max_length=20, unique=True, db_index=True)
     password = models.CharField(max_length=helper.security.encrypted_password_length, blank=False)
+    user_path = models.CharField(max_length=20, db_index=True)
     is_admin = models.BooleanField(default=False)
     display_name = models.CharField(max_length=50, unique=True, db_index=True)
     email = models.EmailField(max_length=100, blank=True)
