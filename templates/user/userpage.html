@@ -15,21 +15,21 @@
 
             <div class="col-sm-8 user-main">
 
-                <h2 class="user-display-name">{{ user.display_name }}</h2>
+                <h2 class="user-display-name">{{ display_user.display_name }}</h2>
 
-                {% if user.description != "" %}
+                {% if display_user.description != "" %}
                     <div class="well">
-                        {{ user.description }}
+                        {{ display_user.description }}
                     </div>
                 {% endif %}
 
                 <div class="user-information">
-                    <p><span class="glyphicon glyphicon-user"></span> {{ user.user_name }}</p>
-                    {% if user.email != "" %}
-                        <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ user.email }}</p>
+                    <p><span class="glyphicon glyphicon-user"></span> {{ display_user.user_name }}</p>
+                    {% if display_user.email != "" %}
+                        <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ display_user.email }}</p>
                     {% endif %}
-                    {% if user.website != "" %}
-                        <p><span class="glyphicon glyphicon-home" aria-hidden="true"></span> <a href="{{ user.website }}">{{ user.website }}</a></p>
+                    {% if display_user.website != "" %}
+                        <p><span class="glyphicon glyphicon-home" aria-hidden="true"></span> <a href="{{ display_user.website }}">{{ display_user.website }}</a></p>
                     {% endif %}
                 </div>
             </div>
