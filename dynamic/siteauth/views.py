@@ -14,7 +14,7 @@ import helper.general
 
 def login(request):
     if request.method == "GET":
-        return_url = request.GET.get("return_url")
+        return_url = request.GET["return_url"] if "return_url" in request.GET else "/"
 
         user = helper.auth.get_current_user(request)
 
