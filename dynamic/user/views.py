@@ -14,11 +14,10 @@ def user(request, user_path=None):
             raise django.http.Http404
         display_user = get_object_or_404(User, user_name=user_name)
 
+        recent_blog_articles = display_user.blogarticleitems.filter(is_shown=True).order_by("id").reverse()[:helper.constants.user_recent_blog_article_count]
+        recent_blog_comments = display_user.blogcommentitems.filter(article__is_shown=True).order_by("id").reverse()[:helper.constants.user_recent_blog_comment_count]
+
         user = helper.auth.get_current_user(request)
-
-        recent_blog_articles = user.blogarticleitems.filter(is_shown=True).order_by("id").reverse()[:helper.constants.user_recent_blog_article_count]
-
-        recent_blog_comments = user.blogcommentitems.filter(article__is_shown=True).order_by("id").reverse()[:helper.constants.user_recent_blog_comment_count]
 
         context = {
             "title": display_user.display_name + " | User Page | SQYBI.com",
