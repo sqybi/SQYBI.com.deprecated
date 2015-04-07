@@ -14,7 +14,7 @@
 
                 {% include "website/partial/alert.html" %}
 
-                <form class="form-auth" action="{% url "register" %}?return_url={{ return_url }}" method="post">
+                <form class="form-auth" action="{% url "register" %}?return_url={{ return_url }}" method="post" autocomplete="off">
                     {% csrf_token %}
                     <h2 class="form-auth-heading">Enter your register information</h2>
                     <input class="form-control form-auth-first" type="text" name="username" placeholder="User Name"
