@@ -17,6 +17,8 @@
                 <form class="form-auth" action="{% url "register" %}?return_url={{ return_url }}" method="post" autocomplete="off">
                     {% csrf_token %}
                     <h2 class="form-auth-heading">Enter your register information</h2>
+					<input style="display:none">
+					<input type="password" style="display:none">
                     <input class="form-control form-auth-first" type="text" name="username" placeholder="User Name"
                            autocomplete="off" required autofocus>
                     <input class="form-control form-auth-middle" type="text" name="displayname"
