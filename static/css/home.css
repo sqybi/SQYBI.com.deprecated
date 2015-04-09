@@ -42,7 +42,7 @@ body {
 }
 
 h1.cover-heading {
-    font-family: Georgia, "Times New Roman", Times, 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif;
+    font-family: Georgia, "Times New Roman", Times, STXihei, sans-serif;
     font-size: 100px;
     margin-bottom: 30px;
 }
