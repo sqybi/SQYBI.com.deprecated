@@ -27,7 +27,10 @@
                     <div style="clear:both"></div>
 
                     <p class="lead">
-                        <a href="/about" class="btn btn-lg btn-default">About</a>
+                        <a href="{% url "login" %}?return_url={{ request.path }}" class="btn btn-lg btn-success">Login</a>
+                        <a href="{% url "register" %}" class="btn btn-lg btn-success">Register</a>
+                        <a href="{% url "about" %}" class="btn btn-lg btn-default">Blog</a>
+                        <a href="{% url "about" %}" class="btn btn-lg btn-default">About</a>
                     </p>
                 </div>
 
