@@ -16,12 +16,15 @@ def login(request):
     if request.method == "GET":
         return_url = request.GET["return_url"] if "return_url" in request.GET else "/"
 
-        user = helper.auth.get_current_user(request)
+        user, new_token = helper.auth.get_current_user(request)
 
         if user is not None:
-            return redirect(helper.general.get_redirect_url(return_url, (
+            response = redirect(helper.general.get_redirect_url(return_url, (
                 { "key": "alertlevel", "value": "warning" },
                 { "key": "alertmsg", "value": "Already signed in" })))
+            if new_token is not None:
+                response.set_cookie("token", new_token, max_age=helper.constants.cookie_max_age_in_seconds, httponly=True)
+            return response
 
         context = {
             "title": "Login | SQYBI.com",
@@ -34,9 +37,20 @@ def login(request):
         }
 
         return render(request, "auth/login.html", context)
+
     elif request.method == "POST":
         return_url_success = request.GET["return_url"] if "return_url" in request.GET else "/"
         return_url_failed = request.META["HTTP_REFERER"] if "HTTP_REFERER" in request.META else "/"
+
+        user, new_token = helper.auth.get_current_user(request)
+
+        if user is not None:
+            response = redirect(helper.general.get_redirect_url(return_url_failed, (
+                { "key": "alertlevel", "value": "warning" },
+                { "key": "alertmsg", "value": "Already signed in" })))
+            if new_token is not None:
+                response.set_cookie("token", new_token, max_age=helper.constants.cookie_max_age_in_seconds, httponly=True)
+            return response
 
         # make sure user name and password exist
         if "username" not in request.POST or "password" not in request.POST:
@@ -84,6 +98,7 @@ def login(request):
                                 httponly=True)
 
         return response
+
     else:
         return django.http.HttpResponseBadRequest()
 
@@ -109,12 +124,15 @@ def register(request):
     if request.method == "GET":
         return_url = request.GET["return_url"] if "return_url" in request.GET else "/"
 
-        user = helper.auth.get_current_user(request)
+        user, new_token = helper.auth.get_current_user(request)
 
         if user is not None:
-            return redirect(helper.general.get_redirect_url(return_url, (
+            response = redirect(helper.general.get_redirect_url(return_url, (
                 { "key": "alertlevel", "value": "warning" },
                 { "key": "alertmsg", "value": "Already signed in" })))
+            if new_token is not None:
+                response.set_cookie("token", new_token, max_age=helper.constants.cookie_max_age_in_seconds, httponly=True)
+            return response
 
         context = {
             "title": "Register | SQYBI.com",
@@ -127,16 +145,20 @@ def register(request):
         }
 
         return render(request, "auth/register.html", context)
+
     elif request.method == "POST":
         return_url_success = request.GET["return_url"] if "return_url" in request.GET else "/"
         return_url_failed = request.META["HTTP_REFERER"] if "HTTP_REFERER" in request.META else "/"
 
-        user = helper.auth.get_current_user(request)
+        user, new_token = helper.auth.get_current_user(request)
 
         if user is not None:
-            return redirect(helper.general.get_redirect_url(return_url_failed, (
+            response = redirect(helper.general.get_redirect_url(return_url_failed, (
                 { "key": "alertlevel", "value": "warning" },
                 { "key": "alertmsg", "value": "Already signed in" })))
+            if new_token is not None:
+                response.set_cookie("token", new_token, max_age=helper.constants.cookie_max_age_in_seconds, httponly=True)
+            return response
 
         # make sure required fields exist
         if "username" not in request.POST or "password" not in request.POST or "displayname" not in request.POST:
@@ -187,5 +209,6 @@ def register(request):
         # do not set cookie for response
         response = redirect(return_url_success)
         return response
+
     else:
         return django.http.HttpResponseBadRequest()

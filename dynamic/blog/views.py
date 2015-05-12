@@ -29,7 +29,7 @@ def index(request, page="1"):
         selected_articles = list(
             BlogArticleItem.objects.filter(is_shown=True).order_by("id").reverse()[start_article:end_article])
 
-        user = helper.auth.get_current_user(request)
+        user, new_token = helper.auth.get_current_user(request)
 
         context = {
             "title": helper.constants.blog_title + " | SQYBI.com",
@@ -44,7 +44,11 @@ def index(request, page="1"):
             "next_page": None if page_num >= total_page_count else str(page_num + 1),
         }
 
-        return render(request, "blog/index.html", context)
+        response = render(request, "blog/index.html", context)
+        if new_token is not None:
+            response.set_cookie("token", new_token, max_age=helper.constants.cookie_max_age_in_seconds, httponly=True)
+        return response
+
     else:
         raise django.http.Http404
 
@@ -66,7 +70,7 @@ def article(request, article_id=None, article_slug=None):
             "id").reverse().first()
         next_article = BlogArticleItem.objects.filter(id__gt=selected_article.id, is_shown=True).order_by("id").first()
 
-        user = helper.auth.get_current_user(request)
+        user, new_token = helper.auth.get_current_user(request)
 
         context = {
             "title": selected_article.title + " | " + helper.constants.blog_title + " | SQYBI.com",
@@ -81,6 +85,9 @@ def article(request, article_id=None, article_slug=None):
             "next_article": next_article,
         }
 
-        return render(request, "blog/article.html", context)
+        response = render(request, "blog/article.html", context)
+        if new_token is not None:
+            response.set_cookie("token", new_token, max_age=helper.constants.cookie_max_age_in_seconds, httponly=True)
+        return response
     else:
         raise django.http.Http404

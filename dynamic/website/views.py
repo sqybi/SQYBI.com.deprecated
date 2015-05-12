@@ -12,7 +12,7 @@ def home(request):
     if request.method == "GET":
         random_quote = random.choice(helper.constants.daily_quotes)
 
-        user = helper.auth.get_current_user(request)
+        user, new_token = helper.auth.get_current_user(request)
 
         context = {
             "title": "Home | SQYBI.com",
@@ -25,6 +25,9 @@ def home(request):
             "daily_quote_author": random_quote[1],
         }
 
-        return render(request, "website/index.html", context)
+        response = render(request, "website/index.html", context)
+        if new_token is not None:
+            response.set_cookie("token", new_token, max_age=helper.constants.cookie_max_age_in_seconds, httponly=True)
+        return response
     else:
         return django.http.HTTP404

@@ -17,7 +17,7 @@ def user(request, user_path=None):
         recent_blog_articles = display_user.blogarticleitems.filter(is_shown=True).order_by("id").reverse()[:helper.constants.user_recent_blog_article_count]
         recent_blog_comments = display_user.blogcommentitems.filter(article__is_shown=True).order_by("id").reverse()[:helper.constants.user_recent_blog_comment_count]
 
-        user = helper.auth.get_current_user(request)
+        user, new_token = helper.auth.get_current_user(request)
 
         context = {
             "title": display_user.display_name + " | User Page | SQYBI.com",
@@ -31,6 +31,9 @@ def user(request, user_path=None):
             "recent_blog_comments": recent_blog_comments,
         }
 
-        return render(request, "user/userpage.html", context)
+        response = render(request, "user/userpage.html", context)
+        if new_token is not None:
+            response.set_cookie("token", new_token, max_age=helper.constants.cookie_max_age_in_seconds, httponly=True)
+        return response
     else:
         return django.http.Http404

@@ -9,6 +9,7 @@ import helper.security
 
 def get_current_user(request):
     user = None
+    new_token = None
 
     # try get user from session
     if "user_name" in request.session and "token" in request.session:
@@ -17,21 +18,22 @@ def get_current_user(request):
         user = get_user(user_name, token)[0]
 
     if user is not None:
-        return user
+        # update cookie
+        new_token = token
+    else:
+        # try get user from cookie
+        user_name = request.COOKIES.get("user_name")
+        token = request.COOKIES.get("token")
+        if user_name is not None and token is not None:
+            user, user_record = get_user(user_name, token)
+            if user is not None:
+                # not exist in session, but exist in cookie: get new token and update
+                new_token = helper.security.generate_cookie_token(user.user_name)
+                user_record.cookie_token = new_token
+                user_record.save()
+                request.session["token"] = new_token
 
-    # try get user from cookie
-    user_name = request.COOKIES.get("user_name")
-    token = request.COOKIES.get("token")
-    if user_name is not None and token is not None:
-        user, user_record = get_user(user_name, token)
-        if user is not None:
-            # not exist in session, but exist in cookie: get new token and update
-            user_record.cookie_token = helper.security.generate_cookie_token(user.user_name)
-            user_record.save()
-            request.COOKIES["token"] = user_record.cookie_token
-            request.session["token"] = user_record.cookie_token
-
-    return user
+    return user, new_token
 
 
 def get_user(user_name, token):
