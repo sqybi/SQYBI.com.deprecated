@@ -17,10 +17,7 @@ def get_current_user(request):
         token = request.session["token"]
         user = get_user(user_name, token)[0]
 
-    if user is not None:
-        # update cookie
-        new_token = token
-    else:
+    if user is None:
         # try get user from cookie
         user_name = request.COOKIES.get("user_name")
         token = request.COOKIES.get("token")
